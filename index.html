@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6Z1W5Q6HHD"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6Z1W5Q6HHD');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Should I call 995?</title>
+    <style>
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 60px;
+            background-color: lightcyan;
+            text-align: center;
+            padding: 30px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px;
+            width: 80px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        button.yes {
+            background: green;
+            color: white;
+        }
+        button.no {
+            background: red;
+            color: white;
+        }
+        #result {
+            display: none;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Should I call 995?</h1>
+    <div class="question-container">
+        <div class="question" id="question1">
+            <h2>Difficulty Breathing?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 1)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 1)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question2">
+            <h2>Severe Chest Pain?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 2)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 2)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question3">
+            <h2>Uncontrolled Bleeding?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 3)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 3)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question4">
+            <h2>Seizures?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 4)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 4)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question5">
+            <h2>Severe Abdominal Pain?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 5)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 5)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question6">
+            <h2>Sudden Numbness or Weakness?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 6)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 6)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question7">
+            <h2>Persistent High Fever?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 7)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 7)">No</button>
+            </div>
+        </div>
+        <div class="question" id="question8">
+            <h2>Recent Trauma or Injury?</h2>
+            <div class="button-container">
+                <button class="yes" onclick="answerQuestion('yes', 8)">Yes</button>
+                <button class="no" onclick="answerQuestion('no', 8)">No</button>
+            </div>
+        </div>
+
+        <div id="result">
+            <h2>Result</h2>
+            <p id="triageResult"></p>
+        </div>
+
+    </div>
+
+    <script>
+        let answers = [];
+        
+        function answerQuestion(answer, questionNumber) {
+            answers[questionNumber - 1] = answer;
+            hideQuestion(questionNumber);
+            showResult();
+        }
+
+        function hideQuestion(questionNumber) {
+            document.getElementById(`question${questionNumber}`).style.display = "none";
+        }
+
+        function showResult() {
+            if (answers.length === 8 && !answers.includes(undefined)) {
+                let resultElement = document.getElementById('result');
+                let resultTextElement = document.getElementById('triageResult');
+                let emergencyCriteriaMet = answers.includes('yes');
+                if (emergencyCriteriaMet) {
+                    resultTextElement.textContent = 'Seek emergency medical attention';
+                    resultElement.style.backgroundColor = '#FF0000';
+                } else {
+                    resultTextElement.textContent = 'Your situation may not require immediate emergency attention, but consult with a healthcare professional';
+                    resultElement.style.backgroundColor = '#4CAF50';
+                }
+
+                resultElement.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
